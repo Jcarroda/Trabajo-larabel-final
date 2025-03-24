@@ -20,10 +20,16 @@ class PictogramaController extends Controller
     public function ej2()
     {
         $pictogramas = Imagenes::all();
+        $agendas = Agenda::all();
 
         return view('ej2', compact('pictogramas'));
     }
+    public function ej3()
+    {
+        $pictogramas = Imagenes::all();
 
+        return view('ej3', compact('pictogramas'));
+    }
     public function ej2Añadir(Request $request)
     {
         $fecha = $request->input('fecha');
@@ -40,5 +46,19 @@ class PictogramaController extends Controller
         
         $pictogramas = Imagenes::all();
         return view('ej2', compact('pictogramas'));
+    }
+
+    public function mostrarAgenda(Request $request)
+    {
+        $fecha = $request->input('fecha');
+        $persona = $request->input('persona');
+
+        $agenda = Agenda::select('imagenes.imagen', 'agenda.fecha', 'agenda.hora')
+            ->join('imagenes', 'imagenes.idimagen', '=', 'agenda.idimagen')
+            ->where('agenda.idpersona', $persona)
+            ->where('agenda.fecha', $fecha)
+            ->get();
+
+        return view('mostrar-agenda', compact('agenda', 'fecha', 'persona'));
     }
 }
