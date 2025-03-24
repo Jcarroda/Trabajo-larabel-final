@@ -93,21 +93,6 @@
         <button type="submit" style="margin-top:1rem; margin-left:4rem; background-color: #337ab7; color: white; padding: 6px 10px; border-radius: 5px; text-decoration: none; display: inline-block; font-size: 12px;">mostrarAgenda</button>
         <a href="./ejercicio1" style="color: #337ab7; text-decoration: none; font-size: 14px; margin-left: 10px;">‹ Volver al listado</a>
     </form>
-
-    @if(isset($agenda) && count($agenda) > 0)
-        <div class="resultados">
-            <h2>Resultados:</h2>
-            @foreach($agenda as $item)
-                <div class="agenda-item">
-                    <p><strong>Fecha:</strong> {{ $item->fecha }}</p>
-                    <p><strong>Hora:</strong> {{ $item->hora }}</p>
-                    <img src="{{ asset($item->imagen) }}" alt="Pictograma">
-                </div>
-            @endforeach
-        </div>
-    @elseif(request()->has('persona') && request()->has('fecha'))
-        <p>No se encontraron resultados para los datos ingresados.</p>
-    @endif
     </main>
 
     <footer>
