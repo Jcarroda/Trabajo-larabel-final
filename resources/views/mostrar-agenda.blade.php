@@ -11,6 +11,10 @@
         margin: 10px;
     }
 
+    img{
+        width: 200px;
+    }
+
     body {
         margin: 0;
     }

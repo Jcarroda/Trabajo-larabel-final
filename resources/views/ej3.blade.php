@@ -15,6 +15,10 @@
         margin: 0;
     }
 
+    img{
+        width: 200px;
+    }
+
     main {
         padding: 0 2rem 2rem 2rem;
     }
